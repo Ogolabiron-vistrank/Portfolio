@@ -1,158 +1,239 @@
-/* Reset & base */
+/* ---------- Base ---------- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f9f9f9;
+html {
+    scroll-behavior: smooth;
 }
 
-/* Header */
+:root {
+    --navy: #14233a;
+    --navy-light: #1f3556;
+    --gold: #c9973a;
+    --gold-light: #e0b865;
+    --bg: #f7f5f0;
+    --text: #2d3436;
+    --muted: #636e72;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, Arial, sans-serif;
+    line-height: 1.7;
+    color: var(--text);
+    background: var(--bg);
+}
+
+/* ---------- Header ---------- */
 header {
-    background-color: #1a2b3c;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
     color: #fff;
     text-align: center;
-    padding: 40px 20px;
+    padding: 70px 20px 30px;
+    border-bottom: 4px solid var(--gold);
 }
 
 header h1 {
-    font-size: 2.5rem;
+    font-size: clamp(2.2rem, 6vw, 3.5rem);
+    font-weight: 800;
+    letter-spacing: 1px;
     margin-bottom: 8px;
 }
 
-header p {
-    font-size: 1.1rem;
-    color: #c9973a;
-    margin-bottom: 16px;
+header > p {
+    font-size: 1.15rem;
+    color: var(--gold-light);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
 }
 
 header img {
-    max-width: 160px;
-    margin: 10px 0;
+    max-width: 180px;
+    background: #fff;
+    padding: 10px 16px;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    margin-bottom: 30px;
 }
 
-/* Navigation */
+/* ---------- Navigation ---------- */
 nav ul {
     list-style: none;
     display: flex;
     justify-content: center;
-    gap: 24px;
-    margin-top: 16px;
     flex-wrap: wrap;
+    gap: 8px;
 }
 
 nav a {
+    display: inline-block;
     color: #fff;
     text-decoration: none;
+    font-size: 0.9rem;
     font-weight: 600;
-    font-size: 0.95rem;
-    letter-spacing: 0.5px;
-    padding-bottom: 4px;
-    border-bottom: 2px solid transparent;
-    transition: border-color 0.2s;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 10px 18px;
+    border-radius: 30px;
+    transition: background 0.25s, color 0.25s;
 }
 
 nav a:hover {
-    border-color: #c9973a;
+    background: var(--gold);
+    color: var(--navy);
 }
 
-/* Sections */
+/* ---------- Sections ---------- */
 section {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
-    padding: 60px 20px;
+    padding: 70px 24px 20px;
+    scroll-margin-top: 20px;
 }
 
 section h2 {
-    font-size: 1.8rem;
-    color: #1a2b3c;
-    margin-bottom: 20px;
-    border-bottom: 3px solid #c9973a;
-    display: inline-block;
-    padding-bottom: 6px;
+    font-size: 2rem;
+    color: var(--navy);
+    margin-bottom: 28px;
+    position: relative;
+    padding-bottom: 14px;
+}
+
+section h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 60px;
+    height: 4px;
+    background: var(--gold);
+    border-radius: 2px;
 }
 
 section p {
-    margin-bottom: 14px;
+    margin-bottom: 16px;
+    color: var(--text);
 }
 
-/* Skills list */
+/* ---------- Skills ---------- */
 #skills ul {
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 12px;
-    margin-top: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
 }
 
 #skills li {
     background: #fff;
-    padding: 14px 18px;
-    border-left: 4px solid #c9973a;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    padding: 16px 20px;
+    border-radius: 8px;
+    border-left: 5px solid var(--gold);
+    font-weight: 500;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
-/* Experience & Projects articles */
+#skills li:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+}
+
+/* ---------- Experience & Projects cards ---------- */
 article {
     background: #fff;
-    padding: 24px;
-    margin-bottom: 20px;
-    border-radius: 6px;
-    box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+    padding: 28px;
+    margin-bottom: 22px;
+    border-radius: 10px;
+    border-top: 4px solid var(--gold);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+article:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.13);
 }
 
 article h3 {
-    color: #1a2b3c;
-    margin-bottom: 8px;
-    font-size: 1.2rem;
+    color: var(--navy);
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+}
+
+article p {
+    color: var(--muted);
+    margin-bottom: 10px;
 }
 
 article a {
-    color: #c9973a;
-    font-weight: 600;
+    display: inline-block;
+    background: var(--navy);
+    color: #fff;
     text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 10px 20px;
+    border-radius: 6px;
+    transition: background 0.25s, color 0.25s;
 }
 
 article a:hover {
-    text-decoration: underline;
+    background: var(--gold);
+    color: var(--navy);
 }
 
-/* Contact */
+/* ---------- Contact ---------- */
+#contact {
+    text-align: center;
+    padding-bottom: 70px;
+}
+
+#contact h2::after {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 #contact a {
-    color: #1a2b3c;
-    font-weight: 600;
+    color: var(--navy);
+    font-weight: 700;
     text-decoration: none;
+    border-bottom: 2px solid var(--gold);
+    transition: color 0.2s;
 }
 
 #contact a:hover {
-    color: #c9973a;
+    color: var(--gold);
 }
 
-/* Footer */
+/* ---------- Footer ---------- */
 footer {
+    background: var(--navy);
+    color: rgba(255, 255, 255, 0.7);
     text-align: center;
-    padding: 24px;
-    background-color: #1a2b3c;
-    color: rgba(255,255,255,0.7);
-    font-size: 0.85rem;
+    padding: 28px 20px;
+    font-size: 0.9rem;
+    border-top: 4px solid var(--gold);
 }
 
-/* Responsive */
+/* ---------- Mobile ---------- */
 @media (max-width: 600px) {
-    header h1 {
-        font-size: 2rem;
+    header {
+        padding: 50px 16px 24px;
+    }
+
+    nav a {
+        padding: 8px 12px;
+        font-size: 0.8rem;
     }
 
     section {
-        padding: 40px 16px;
+        padding: 50px 16px 10px;
     }
 
-    nav ul {
-        gap: 14px;
+    article {
+        padding: 22px;
     }
 }
