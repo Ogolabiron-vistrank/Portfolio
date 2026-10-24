@@ -1,89 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biron Ogola | Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Shown by Google under your page title -->
+  <meta name="description" content="Biron Ogola, digital marketer and SEO specialist in Nairobi. Founder of Vistrank Marketing Agency.">
+  <title>Biron Ogola | Digital Marketer &amp; SEO Specialist</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- defer = load the script after the page HTML is ready -->
+  <script src="script.js" defer></script>
 </head>
 <body>
 
-    <header>
-        <h1>Biron Ogola</h1>
-        <p>Digital Marketer &amp; SEO Specialist</p>
-        <img src="Images/biron_signature-removebg-preview.png" alt="Biron Ogola signature">
-        <nav>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+  <header class="site-header">
+    <div class="container bar">
+      <a href="#home" class="logo">Biron Ogola</a>
+      <nav id="nav">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button id="theme-btn" class="icon-btn" aria-label="Toggle dark mode">Dark</button>
+      <button id="menu-btn" class="icon-btn menu-btn" aria-label="Open menu">Menu</button>
+    </div>
+  </header>
 
-    <section id="about">
-        <h2>About Me</h2>
-        <p>I'm a digital marketer and SEO specialist based in Nairobi, Kenya, with 5+ years of experience across the travel, tourism, and other industries. I'm the founder and CEO of Vistrank Marketing Agency, a full-service digital marketing agency, and I also hold a senior Sales and Marketing role at Beyond the Plains Safaris, a KATO-registered Kenya and Tanzania safari operator.</p>
-        <p>Beyond client work, I'm currently building Silent Plains Africa, my own Kenya and Tanzania safari company.</p>
+  <main>
+    <section id="home" class="hero">
+      <div class="container">
+        <p class="eyebrow">Nairobi, Kenya</p>
+        <h1>Hi, I'm Biron Ogola.</h1>
+        <p class="role">I'm a <span id="typed">SEO Specialist</span></p>
+        <p class="lead">I help travel brands get found on Google and turn visitors into enquiries.</p>
+        <div class="actions">
+          <a href="#projects" class="btn btn-gold">See my work</a>
+          <a href="#contact" class="btn btn-outline">Get in touch</a>
+        </div>
+      </div>
     </section>
 
-    <section id="skills">
-        <h2>Skills</h2>
-        <ul>
-            <li>SEO Strategy &amp; Optimization</li>
-            <li>Website Development</li>
-            <li>Digital Marketing Strategy</li>
-            <li>PPC &amp; Paid Advertising (Google Ads, Meta Ads, LinkedIn Ads, YouTube Ads)</li>
-            <li>Safari Travel &amp; Content Writing</li>
-            <li>Safari Consultation</li>
-        </ul>
+    <section class="stats">
+      <div class="container stats-grid">
+        <div class="stat reveal"><span class="num" data-target="5">0</span><span class="plus">+</span><p>Years of experience</p></div>
+        <div class="stat reveal"><span class="num" data-target="10">0</span><p>People on my agency team</p></div>
+        <div class="stat reveal"><span class="num" data-target="3">0</span><p>Businesses I run or grow</p></div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container about-grid">
+        <div class="reveal">
+          <h2>About Me</h2>
+          <p>I'm a digital marketer and SEO specialist based in Nairobi, Kenya. I have 5+ years of experience across travel, tourism and other industries.</p>
+          <p>I'm the founder and CEO of Vistrank Marketing Agency. I also hold a senior Sales and Marketing role at Beyond the Plains Safaris, a KATO-registered Kenya and Tanzania safari operator.</p>
+          <p>Outside client work, I'm building Silent Plains Africa, my own Kenya and Tanzania safari company.</p>
+        </div>
+        <div class="sign-card reveal">
+          <img src="Images/biron_signature-removebg-preview.png" alt="Biron Ogola signature">
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="alt">
+      <div class="container">
+        <h2>What I Do</h2>
+        <div class="grid">
+          <div class="card reveal"><h3>SEO</h3><p>Technical SEO, on-page optimization and content that ranks.</p></div>
+          <div class="card reveal"><h3>Web Development</h3><p>Fast, clean websites built to convert visitors into leads.</p></div>
+          <div class="card reveal"><h3>Paid Advertising</h3><p>Google Ads, Meta Ads, LinkedIn Ads and YouTube Ads.</p></div>
+          <div class="card reveal"><h3>Content Writing</h3><p>Safari and travel content written to inform and sell.</p></div>
+          <div class="card reveal"><h3>Digital Strategy</h3><p>Plans that connect your marketing channels to bookings.</p></div>
+          <div class="card reveal"><h3>Safari Consultation</h3><p>Advice on safari products, positioning and trade partnerships.</p></div>
+        </div>
+      </div>
     </section>
 
     <section id="experience">
+      <div class="container">
         <h2>Experience</h2>
-
-        <article>
-            <h3>Founder &amp; CEO — Vistrank Marketing Agency</h3>
-            <p>Leading a 10-person, Nairobi-based full-service digital marketing agency offering SEO, web development, paid advertising, and content strategy for clients in travel, tourism, and other industries.</p>
-        </article>
-
-        <article>
-            <h3>Sales &amp; Marketing — Beyond the Plains Safaris</h3>
-            <p>Senior role handling marketing strategy for a KATO-registered safari operator running tours across Kenya and Tanzania.</p>
-        </article>
-
-        <article>
-            <h3>Founder — Silent Plains Africa</h3>
-            <p>Building an independent Kenya and Tanzania safari company from the ground up, currently in early development.</p>
-        </article>
+        <div class="timeline">
+          <article class="job reveal">
+            <h3>Founder &amp; CEO, Vistrank Marketing Agency</h3>
+            <p>I lead a 10-person Nairobi agency offering SEO, web development, paid advertising and content strategy.</p>
+          </article>
+          <article class="job reveal">
+            <h3>Sales &amp; Marketing, Beyond the Plains Safaris</h3>
+            <p>Senior role covering marketing for a KATO-registered operator running tours across Kenya and Tanzania.</p>
+          </article>
+          <article class="job reveal">
+            <h3>Founder, Silent Plains Africa</h3>
+            <p>Building an independent Kenya and Tanzania safari company from the ground up.</p>
+          </article>
+        </div>
+      </div>
     </section>
 
-    <section id="projects">
+    <section id="projects" class="alt">
+      <div class="container">
         <h2>Projects</h2>
-
-        <article>
+        <div class="grid">
+          <article class="card reveal">
             <h3>Beyond the Plains Safaris</h3>
-            <p>Led SEO, web development, and digital marketing for this KATO-registered Kenya and Tanzania safari operator.</p>
-            <p><a href="https://www.beyondtheplainssafaris.com" target="_blank" rel="noopener noreferrer">Visit website</a></p>
-        </article>
-
-        <article>
+            <p>SEO, web development and digital marketing for a Kenya and Tanzania safari operator.</p>
+            <a class="btn btn-dark" href="https://www.beyondtheplainssafaris.com" target="_blank" rel="noopener noreferrer">Visit site</a>
+          </article>
+          <article class="card reveal">
+            <h3>Vistrank Marketing Agency</h3>
+            <p>A full-service digital marketing and software development agency in Nairobi.</p>
+            <a class="btn btn-dark" href="https://vistrankmarketingagency.co.ke" target="_blank" rel="noopener noreferrer">Visit site</a>
+          </article>
+          <article class="card reveal">
             <h3>Silent Plains Africa</h3>
-            <p>An independent safari company currently in pre-launch development, covering Kenya and Tanzania.</p>
-        </article>
+            <p>My own Kenya and Tanzania safari company, currently in pre-launch.</p>
+          </article>
+        </div>
+      </div>
     </section>
 
     <section id="contact">
-        <h2>Contact</h2>
-        <p>Email: <a href="mailto:ogola@vistrankmarketingagency.co.ke">ogola@vistrankmarketingagency.co.ke</a></p>
-        <p>Phone: <a href="tel:+254745590128">+254 745 590 128</a></p>
+      <div class="container center reveal">
+        <h2>Let's Work Together</h2>
+        <p>Need more traffic, more enquiries or a better website? Send me a message.</p>
+        <p><a href="mailto:ogola@vistrankmarketingagency.co.ke">ogola@vistrankmarketingagency.co.ke</a></p>
+        <p><a href="tel:+254745590128">+254 745 590 128</a></p>
+      </div>
     </section>
+  </main>
 
-    <footer>
-        <p>&copy; 2026 Biron Ogola. All rights reserved.</p>
-    </footer>
+  <footer>
+    <p>&copy; <span id="year">2026</span> Biron Ogola. All rights reserved.</p>
+  </footer>
 
 </body>
 </html>
