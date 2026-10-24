@@ -2,6 +2,8 @@
 :root {
   --navy: #14233a; --navy2: #1f3556; --gold: #c9973a;
   --bg: #f7f5f0; --card: #ffffff; --text: #2d3436; --muted: #636e72; --line: #e6e1d6;
+  /* Chart colors, used by the pie chart */
+  --c1: #c9973a; --c2: #3b6ea5; --c3: #2f9e8f; --c4: #8e5ea2; --c5: #d9634c;
 }
 /* Dark mode: JS adds data-theme="dark" to <html>, which swaps these values */
 [data-theme="dark"] {
@@ -21,8 +23,9 @@ h2::after { content: ''; position: absolute; left: 0; bottom: 0; width: 60px; he
 .center h2::after { left: 50%; transform: translateX(-50%); }
 p { margin-bottom: 14px; }
 a { color: var(--gold); }
+.note { color: var(--muted); font-size: .9rem; margin-top: -18px; margin-bottom: 28px; }
 
-/* 3. HEADER (sticky = stays at the top while you scroll) */
+/* 3. HEADER */
 .site-header { position: sticky; top: 0; z-index: 10; background: var(--navy); border-bottom: 3px solid var(--gold); }
 .bar { display: flex; align-items: center; gap: 16px; height: 64px; }
 .logo { color: #fff; font-weight: 800; text-decoration: none; margin-right: auto; }
@@ -34,7 +37,8 @@ nav a:hover { background: var(--gold); color: var(--navy); }
 .menu-btn { display: none; }
 
 /* 4. HERO */
-.hero { background: linear-gradient(135deg, var(--navy), var(--navy2)); color: #fff; padding: 110px 0; }
+.hero { position: relative; overflow: hidden; background: linear-gradient(135deg, var(--navy), var(--navy2)); color: #fff; padding: 110px 0; }
+.hero .container { position: relative; z-index: 2; }  /* keeps the text above the floating items */
 .eyebrow { color: var(--gold); text-transform: uppercase; letter-spacing: 3px; font-size: .85rem; }
 .hero h1 { font-size: clamp(2.4rem, 7vw, 4rem); line-height: 1.1; margin: 10px 0; }
 .role { font-size: 1.5rem; }
@@ -42,7 +46,28 @@ nav a:hover { background: var(--gold); color: var(--navy); }
 .lead { max-width: 520px; color: rgba(255,255,255,.8); margin-top: 12px; }
 .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
 
-/* 5. BUTTONS */
+/* 5. FLOATING ITEMS */
+.float-layer { position: absolute; inset: 0; z-index: 1; pointer-events: none; }  /* pointer-events: none = clicks pass through */
+.shape { position: absolute; animation: float 8s ease-in-out infinite; }
+.s1 { width: 90px;  height: 90px;  top: 12%;   right: 10%; border: 2px solid rgba(201,151,58,.5); border-radius: 50%; }
+.s2 { width: 48px;  height: 48px;  top: 62%;   right: 20%; border: 2px solid rgba(255,255,255,.3); border-radius: 12px; animation-duration: 10s; animation-delay: -2s; }
+.s3 { width: 150px; height: 150px; bottom: -40px; right: -30px; background: rgba(201,151,58,.14); border-radius: 50%; animation-duration: 12s; }
+.s4 { width: 22px;  height: 22px;  top: 28%;   right: 36%; background: var(--gold); border-radius: 50%; opacity: .6; animation-delay: -4s; }
+.s5 { width: 70px;  height: 70px;  top: 70%;   right: 42%; border: 2px dashed rgba(255,255,255,.25); border-radius: 50%; animation-duration: 14s; animation-delay: -6s; }
+
+.chip { position: absolute; padding: 8px 18px; border-radius: 30px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.25); backdrop-filter: blur(6px); color: #fff; font-size: .8rem; font-weight: 600; letter-spacing: 1px; animation: float 7s ease-in-out infinite; }
+.c1 { top: 20%; right: 22%; }
+.c2 { top: 44%; right: 7%;  animation-delay: -2s; animation-duration: 9s; }
+.c3 { top: 66%; right: 26%; animation-delay: -4s; animation-duration: 8s; }
+.c4 { top: 82%; right: 6%;  animation-delay: -1s; animation-duration: 10s; }
+
+/* A keyframe animation: move up 22px and rotate a little, then return */
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-22px) rotate(8deg); }
+}
+
+/* 6. BUTTONS */
 .btn { display: inline-block; padding: 12px 26px; border-radius: 6px; font-weight: 700; text-decoration: none; transition: .25s; }
 .btn-gold { background: var(--gold); color: var(--navy); }
 .btn-gold:hover { background: #e0b865; }
@@ -51,45 +76,111 @@ nav a:hover { background: var(--gold); color: var(--navy); }
 .btn-dark { background: var(--navy); color: #fff; margin-top: 6px; }
 .btn-dark:hover { background: var(--gold); color: var(--navy); }
 
-/* 6. STATS (grid = rows and columns) */
-.stats { padding: 0; margin-top: -40px; position: relative; }
+/* 7. STATS */
+.stats { padding: 0; margin-top: -40px; position: relative; z-index: 3; }
 .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 .stat { background: var(--card); padding: 24px; text-align: center; border-radius: 10px; box-shadow: 0 6px 20px rgba(0,0,0,.12); border-top: 4px solid var(--gold); }
 .num, .plus { font-size: 2.4rem; font-weight: 800; color: var(--gold); }
 .stat p { margin: 0; color: var(--muted); font-size: .9rem; }
 
-/* 7. ABOUT */
+/* 8. ABOUT */
 .about-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; align-items: center; }
 .sign-card { background: #fff; padding: 24px; border-radius: 10px; box-shadow: 0 4px 14px rgba(0,0,0,.1); text-align: center; }
 .sign-card img { max-width: 100%; }
 
-/* 8. CARDS */
+/* 9. CARDS */
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
 .card { background: var(--bg); padding: 26px; border-radius: 10px; border-top: 4px solid var(--gold); box-shadow: 0 2px 10px rgba(0,0,0,.07); transition: transform .25s, box-shadow .25s; }
 .card:hover { transform: translateY(-5px); box-shadow: 0 12px 26px rgba(0,0,0,.15); }
 .card h3 { margin-bottom: 8px; }
 .card p { color: var(--muted); }
 
-/* 9. TIMELINE */
+/* 10. CHARTS */
+.charts-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.chart-card { background: var(--card); border: 1px solid var(--line); border-top: 4px solid var(--gold); border-radius: 10px; padding: 26px; box-shadow: 0 2px 10px rgba(0,0,0,.07); }
+.chart-card.wide { grid-column: 1 / -1; }
+.chart-card h3 { margin-bottom: 20px; }
+
+/* Horizontal bars. --v is set per bar by JS, for example 95% */
+.bar { margin-bottom: 16px; }
+.bar-top { display: flex; justify-content: space-between; font-size: .9rem; font-weight: 600; margin-bottom: 6px; }
+.track { height: 10px; background: var(--line); border-radius: 6px; overflow: hidden; }
+.fill { height: 100%; width: 0; border-radius: 6px; background: linear-gradient(90deg, var(--gold), #e0b865); transition: width 1.2s cubic-bezier(.2,.8,.2,1) .2s; }
+.chart-card.visible .fill { width: var(--v); }   /* grows when the card scrolls into view */
+
+/* Vertical bars */
+.vbars { display: flex; gap: 18px; height: 260px; }
+.vbar { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.vval { font-weight: 700; font-size: .9rem; }
+.vname { font-size: .8rem; font-weight: 600; color: var(--muted); }
+.vtrack { flex: 1; width: 100%; max-width: 70px; display: flex; align-items: flex-end; background: var(--line); border-radius: 8px; overflow: hidden; }
+.vfill { width: 100%; height: 0; background: linear-gradient(to top, var(--gold), #e0b865); transition: height 1.2s cubic-bezier(.2,.8,.2,1) .2s; }
+.chart-card.visible .vfill { height: var(--v); }
+
+/* Pie (donut) chart. The circle's edge length is 100, so a value of 30 draws 30 percent */
+.donut-wrap { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+.donut { width: 190px; height: 190px; flex-shrink: 0; }
+.donut-track { fill: none; stroke: var(--line); stroke-width: 6; }
+.seg { fill: none; stroke-width: 6; stroke-dasharray: 0 100; transition: stroke-dasharray 1.2s ease .2s, opacity .25s; cursor: pointer; }
+.chart-card.visible .seg { stroke-dasharray: var(--dash) var(--gap); }
+.donut.dim .seg { opacity: .25; }
+.donut.dim .seg.active { opacity: 1; }
+.donut text { fill: var(--text); }
+.donut-title { font-size: 4px; font-weight: 700; }
+.donut-sub { font-size: 3px; fill: var(--muted) !important; }
+.legend { list-style: none; flex: 1; min-width: 190px; }
+.legend li { display: flex; align-items: center; gap: 10px; padding: 7px 0; font-size: .9rem; border-bottom: 1px solid var(--line); cursor: default; }
+.legend li:last-child { border-bottom: none; }
+.legend strong { margin-left: auto; }
+.dot { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
+
+/* 11. WEBSITE PREVIEWS */
+.projects-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); }
+.project { padding: 0; overflow: hidden; background: var(--card); border: 1px solid var(--line); border-top: 4px solid var(--gold); }
+.project .body { padding: 22px 24px 26px; }
+.shot { aspect-ratio: 16 / 10; background: linear-gradient(135deg, var(--navy), var(--navy2)); overflow: hidden; }
+.shot img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; transition: transform .5s; }
+.project:hover .shot img { transform: scale(1.05); }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.tags span { font-size: .75rem; padding: 3px 10px; border-radius: 20px; border: 1px solid var(--line); color: var(--muted); }
+
+/* 12. TIMELINE */
 .timeline { border-left: 3px solid var(--gold); padding-left: 28px; }
 .job { margin-bottom: 28px; position: relative; }
 .job::before { content: ''; position: absolute; left: -38px; top: 8px; width: 14px; height: 14px; background: var(--gold); border-radius: 50%; }
 .job p { color: var(--muted); }
 
-/* 10. FOOTER */
+/* 13. FOOTER */
 footer { background: var(--navy); color: rgba(255,255,255,.7); text-align: center; padding: 26px; border-top: 3px solid var(--gold); }
 footer p { margin: 0; }
 
-/* 11. SCROLL REVEAL: starts hidden, JS adds .visible */
+/* 14. FLOATING BACK-TO-TOP BUTTON (position: fixed = stays on screen while scrolling) */
+.to-top { position: fixed; right: 24px; bottom: 24px; z-index: 20; width: 46px; height: 46px; border: none; border-radius: 50%; background: var(--gold); color: var(--navy); cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 18px rgba(0,0,0,.3); opacity: 0; transform: translateY(20px); pointer-events: none; transition: opacity .3s, transform .3s, background .25s; }
+.to-top.show { opacity: 1; transform: none; pointer-events: auto; }
+.to-top:hover { background: #e0b865; }
+
+/* 15. SCROLL REVEAL: starts hidden, JS adds .visible */
 .reveal { opacity: 0; transform: translateY(26px); transition: opacity .6s, transform .6s; }
 .reveal.visible { opacity: 1; transform: none; }
 
-/* 12. MOBILE: these rules apply on screens 700px wide or smaller */
+/* 16. RESPONSIVE */
+@media (max-width: 900px) {
+  .chip { display: none; }   /* floating labels would overlap the text on small screens */
+}
 @media (max-width: 700px) {
   .menu-btn { display: block; }
   nav { display: none; position: absolute; top: 64px; left: 0; right: 0; background: var(--navy); }
   nav.open { display: block; }
   nav ul { flex-direction: column; padding: 12px 24px; }
-  .stats-grid, .about-grid { grid-template-columns: 1fr; }
+  .stats-grid, .about-grid, .charts-grid { grid-template-columns: 1fr; }
   section { padding: 56px 0; }
+  .s1, .s5 { display: none; }
+  .vbars { gap: 10px; }
+}
+
+/* 17. ACCESSIBILITY: if the visitor asked their system for less motion, turn animation off */
+@media (prefers-reduced-motion: reduce) {
+  .shape, .chip { animation: none; }
+  .reveal, .fill, .vfill, .seg { transition: none; }
+  html { scroll-behavior: auto; }
 }

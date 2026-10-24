@@ -38,7 +38,98 @@ setInterval(() => {
   typed.textContent = roles[roleIndex];
 }, 2500);
 
-// 5. SCROLL REVEAL: IntersectionObserver tells us when an element enters the screen
+// 5. CHART DATA: edit these numbers to match your honest self-assessment.
+//    Each chart is built from these lists, so you never touch the HTML.
+const skills = [
+  { name: 'SEO',                 value: 95 },
+  { name: 'Content Writing',     value: 90 },
+  { name: 'Safari Consultation', value: 90 },
+  { name: 'Web Development',     value: 85 },
+  { name: 'Paid Advertising',    value: 85 },
+  { name: 'Digital Strategy',    value: 85 }
+];
+
+const workMix = [  // these should add up to 100
+  { name: 'SEO',                     value: 30 },
+  { name: 'Web Development',         value: 25 },
+  { name: 'Paid Advertising',        value: 20 },
+  { name: 'Content Writing',         value: 15 },
+  { name: 'Strategy and Consulting', value: 10 }
+];
+
+const adPlatforms = [
+  { name: 'Google',   value: 90 },
+  { name: 'Meta',     value: 85 },
+  { name: 'LinkedIn', value: 75 },
+  { name: 'YouTube',  value: 70 }
+];
+
+// 6. BUILD THE HORIZONTAL BARS
+// forEach runs the code once for every item in the list.
+// The backticks ` ` let us put ${variables} inside text (a "template literal").
+const skillBars = document.getElementById('skill-bars');
+skills.forEach(skill => {
+  const row = document.createElement('div');   // create a new <div> in memory
+  row.className = 'bar';
+  row.innerHTML = `
+    <div class="bar-top"><span>${skill.name}</span><span>${skill.value}%</span></div>
+    <div class="track"><div class="fill" style="--v:${skill.value}%"></div></div>`;
+  skillBars.appendChild(row);                  // add it to the page
+});
+
+// 7. BUILD THE VERTICAL BARS
+const adBars = document.getElementById('ad-bars');
+adPlatforms.forEach(ad => {
+  const col = document.createElement('div');
+  col.className = 'vbar';
+  col.innerHTML = `
+    <span class="vval">${ad.value}%</span>
+    <div class="vtrack"><div class="vfill" style="--v:${ad.value}%"></div></div>
+    <span class="vname">${ad.name}</span>`;
+  adBars.appendChild(col);
+});
+
+// 8. BUILD THE PIE (DONUT) CHART
+// SVG shapes need createElementNS because they use a different XML namespace than HTML.
+const SVG_NS = 'http://www.w3.org/2000/svg';
+const donut = document.getElementById('donut');
+const legend = document.getElementById('donut-legend');
+let used = 0; // how much of the circle is already taken
+
+workMix.forEach((item, i) => {
+  // One circle per slice. The dash is the colored part, the gap is the rest.
+  const seg = document.createElementNS(SVG_NS, 'circle');
+  seg.setAttribute('class', 'seg');
+  seg.setAttribute('cx', '21');
+  seg.setAttribute('cy', '21');
+  seg.setAttribute('r', '15.915');                     // makes the edge exactly 100 long
+  seg.setAttribute('stroke-dashoffset', 25 - used);    // 25 starts the slice at 12 o'clock
+  seg.style.setProperty('--dash', item.value);
+  seg.style.setProperty('--gap', 100 - item.value);
+  seg.style.stroke = `var(--c${i + 1})`;               // picks --c1, --c2, ...
+  donut.appendChild(seg);
+  used += item.value;
+
+  // The matching legend row
+  const li = document.createElement('li');
+  li.innerHTML = `<span class="dot" style="background:var(--c${i + 1})"></span>${item.name}<strong>${item.value}%</strong>`;
+  legend.appendChild(li);
+
+  // Hover: dim the other slices and highlight this one
+  [li, seg].forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      donut.classList.add('dim');
+      seg.classList.add('active');
+    });
+    el.addEventListener('mouseleave', () => {
+      donut.classList.remove('dim');
+      seg.classList.remove('active');
+    });
+  });
+});
+
+// 9. SCROLL REVEAL: IntersectionObserver tells us when an element enters the screen.
+// Adding .visible also starts the chart animations, because the CSS listens for it.
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -50,7 +141,7 @@ const revealObserver = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-// 6. COUNTERS: count up from 0 to the data-target number when scrolled into view
+// 10. COUNTERS: count up from 0 to the data-target number when scrolled into view
 function countUp(el) {
   const target = Number(el.dataset.target); // reads data-target="5" from the HTML
   let current = 0;
@@ -71,3 +162,14 @@ const counterObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.5 });
 
 document.querySelectorAll('.num').forEach(el => counterObserver.observe(el));
+
+// 11. BACK-TO-TOP BUTTON: shows after 500px of scrolling, scrolls smoothly to the top on click
+const toTop = document.getElementById('to-top');
+
+window.addEventListener('scroll', () => {
+  toTop.classList.toggle('show', window.scrollY > 500); // add "show" if true, remove if false
+});
+
+toTop.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});

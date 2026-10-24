@@ -3,11 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Shown by Google under your page title -->
   <meta name="description" content="Biron Ogola, digital marketer and SEO specialist in Nairobi. Founder of Vistrank Marketing Agency.">
   <title>Biron Ogola | Digital Marketer &amp; SEO Specialist</title>
   <link rel="stylesheet" href="style.css">
-  <!-- defer = load the script after the page HTML is ready -->
   <script src="script.js" defer></script>
 </head>
 <body>
@@ -19,8 +17,9 @@
         <ul>
           <li><a href="#about">About</a></li>
           <li><a href="#skills">Skills</a></li>
+          <li><a href="#charts">Insights</a></li>
           <li><a href="#experience">Experience</a></li>
-          <li><a href="#projects">Projects</a></li>
+          <li><a href="#projects">Websites</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
@@ -31,6 +30,19 @@
 
   <main>
     <section id="home" class="hero">
+      <!-- Floating decoration. aria-hidden hides it from screen readers -->
+      <div class="float-layer" aria-hidden="true">
+        <span class="shape s1"></span>
+        <span class="shape s2"></span>
+        <span class="shape s3"></span>
+        <span class="shape s4"></span>
+        <span class="shape s5"></span>
+        <span class="chip c1">SEO</span>
+        <span class="chip c2">Google Ads</span>
+        <span class="chip c3">WordPress</span>
+        <span class="chip c4">Content Writing</span>
+      </div>
+
       <div class="container">
         <p class="eyebrow">Nairobi, Kenya</p>
         <h1>Hi, I'm Biron Ogola.</h1>
@@ -47,7 +59,7 @@
       <div class="container stats-grid">
         <div class="stat reveal"><span class="num" data-target="5">0</span><span class="plus">+</span><p>Years of experience</p></div>
         <div class="stat reveal"><span class="num" data-target="10">0</span><p>People on my agency team</p></div>
-        <div class="stat reveal"><span class="num" data-target="3">0</span><p>Businesses I run or grow</p></div>
+        <div class="stat reveal"><span class="num" data-target="4">0</span><p>Safari websites I've worked on</p></div>
       </div>
     </section>
 
@@ -79,7 +91,41 @@
       </div>
     </section>
 
-    <section id="experience">
+    <!-- CHARTS: the bars and the pie are built by script.js from data arrays -->
+    <section id="charts">
+      <div class="container">
+        <h2>Skills at a Glance</h2>
+        <p class="note">Self-rated. These show where my strengths are, not client results.</p>
+
+        <div class="charts-grid">
+
+          <div class="chart-card reveal">
+            <h3>Core skills</h3>
+            <div id="skill-bars"></div>
+          </div>
+
+          <div class="chart-card reveal">
+            <h3>Where my work goes</h3>
+            <div class="donut-wrap">
+              <svg id="donut" class="donut" viewBox="0 0 42 42" role="img" aria-label="Pie chart showing the split of my work across SEO, web development, paid advertising, content and strategy">
+                <circle class="donut-track" cx="21" cy="21" r="15.915"></circle>
+                <text x="21" y="20.5" text-anchor="middle" class="donut-title">My work</text>
+                <text x="21" y="25.5" text-anchor="middle" class="donut-sub">split</text>
+              </svg>
+              <ul id="donut-legend" class="legend"></ul>
+            </div>
+          </div>
+
+          <div class="chart-card wide reveal">
+            <h3>Ad platforms</h3>
+            <div id="ad-bars" class="vbars"></div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="alt">
       <div class="container">
         <h2>Experience</h2>
         <div class="timeline">
@@ -99,29 +145,72 @@
       </div>
     </section>
 
-    <section id="projects" class="alt">
+    <section id="projects">
       <div class="container">
-        <h2>Projects</h2>
-        <div class="grid">
-          <article class="card reveal">
-            <h3>Beyond the Plains Safaris</h3>
-            <p>SEO, web development and digital marketing for a Kenya and Tanzania safari operator.</p>
-            <a class="btn btn-dark" href="https://www.beyondtheplainssafaris.com" target="_blank" rel="noopener noreferrer">Visit site</a>
+        <h2>Websites I've Worked On</h2>
+        <div class="grid projects-grid">
+
+          <article class="card project reveal">
+            <div class="shot">
+              <img loading="lazy" alt="Preview of Beyond the Plains Safaris website"
+                   src="https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.beyondtheplainssafaris.com%2F?w=800&h=500"
+                   onerror="this.style.display='none'">
+            </div>
+            <div class="body">
+              <h3>Beyond the Plains Safaris</h3>
+              <div class="tags"><span>SEO</span><span>Web Development</span><span>Content</span></div>
+              <p>Kenya and Tanzania safari operator, KATO-registered. My in-house marketing work.</p>
+              <a class="btn btn-dark" href="https://www.beyondtheplainssafaris.com/" target="_blank" rel="noopener noreferrer">Visit site</a>
+            </div>
           </article>
-          <article class="card reveal">
-            <h3>Vistrank Marketing Agency</h3>
-            <p>A full-service digital marketing and software development agency in Nairobi.</p>
-            <a class="btn btn-dark" href="https://vistrankmarketingagency.co.ke" target="_blank" rel="noopener noreferrer">Visit site</a>
+
+          <article class="card project reveal">
+            <div class="shot">
+              <img loading="lazy" alt="Preview of AK African Tours and Safaris website"
+                   src="https://s0.wp.com/mshots/v1/https%3A%2F%2Fakafricantoursandsafaris.com%2F?w=800&h=500"
+                   onerror="this.style.display='none'">
+            </div>
+            <div class="body">
+              <h3>AK African Tours &amp; Safaris</h3>
+              <div class="tags"><span>WordPress</span><span>Web Development</span></div>
+              <p>Safari tour company website built on WordPress, with enquiry forms set up to reach the sales inbox.</p>
+              <a class="btn btn-dark" href="https://akafricantoursandsafaris.com/" target="_blank" rel="noopener noreferrer">Visit site</a>
+            </div>
           </article>
-          <article class="card reveal">
-            <h3>Silent Plains Africa</h3>
-            <p>My own Kenya and Tanzania safari company, currently in pre-launch.</p>
+
+          <article class="card project reveal">
+            <div class="shot">
+              <img loading="lazy" alt="Preview of Steve and Richard Safaris website"
+                   src="https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.steveandrichardsafaris.com%2F?w=800&h=500"
+                   onerror="this.style.display='none'">
+            </div>
+            <div class="body">
+              <h3>Steve &amp; Richard Safaris</h3>
+              <div class="tags"><span>SEO</span><span>Conversion</span></div>
+              <p>Safari company website. I optimized the package pages for search and enquiries.</p>
+              <a class="btn btn-dark" href="https://www.steveandrichardsafaris.com/" target="_blank" rel="noopener noreferrer">Visit site</a>
+            </div>
           </article>
+
+          <article class="card project reveal">
+            <div class="shot">
+              <img loading="lazy" alt="Preview of Serengeti Trails Safaris website"
+                   src="https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.serengetitrailssafaris.com%2F?w=800&h=500"
+                   onerror="this.style.display='none'">
+            </div>
+            <div class="body">
+              <h3>Serengeti Trails Safaris</h3>
+              <div class="tags"><span>Web</span><span>SEO</span></div>
+              <p>Safari operator website covering Tanzania and East Africa itineraries.</p>
+              <a class="btn btn-dark" href="https://www.serengetitrailssafaris.com/" target="_blank" rel="noopener noreferrer">Visit site</a>
+            </div>
+          </article>
+
         </div>
       </div>
     </section>
 
-    <section id="contact">
+    <section id="contact" class="alt">
       <div class="container center reveal">
         <h2>Let's Work Together</h2>
         <p>Need more traffic, more enquiries or a better website? Send me a message.</p>
@@ -134,6 +223,13 @@
   <footer>
     <p>&copy; <span id="year">2026</span> Biron Ogola. All rights reserved.</p>
   </footer>
+
+  <!-- Floating back-to-top button (arrow is an SVG, not an emoji) -->
+  <button id="to-top" class="to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+      <path d="M6 15l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
 
 </body>
 </html>
