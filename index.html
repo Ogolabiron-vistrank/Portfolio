@@ -18,8 +18,9 @@
           <li><a href="#about">About</a></li>
           <li><a href="#skills">Skills</a></li>
           <li><a href="#charts">Insights</a></li>
+          <li><a href="#education">Education</a></li>
           <li><a href="#experience">Experience</a></li>
-          <li><a href="#projects">Websites</a></li>
+          <li><a href="#projects">Projects</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
@@ -30,7 +31,6 @@
 
   <main>
     <section id="home" class="hero">
-      <!-- Floating decoration. aria-hidden hides it from screen readers -->
       <div class="float-layer" aria-hidden="true">
         <span class="shape s1"></span>
         <span class="shape s2"></span>
@@ -46,8 +46,8 @@
       <div class="container">
         <p class="eyebrow">Nairobi, Kenya</p>
         <h1>Hi, I'm Biron Ogola.</h1>
-        <p class="role">I'm a <span id="typed">SEO Specialist</span></p>
-        <p class="lead">I help travel brands get found on Google and turn visitors into enquiries.</p>
+        <p class="role"><span id="typed">SEO Specialist</span></p>
+        <p class="lead">I help travel brands get found on Google and turn visitors into enquiries. I'm also building my front-end skills in HTML, CSS and JavaScript.</p>
         <div class="actions">
           <a href="#projects" class="btn btn-gold">See my work</a>
           <a href="#contact" class="btn btn-outline">Get in touch</a>
@@ -70,6 +70,8 @@
           <p>I'm a digital marketer and SEO specialist based in Nairobi, Kenya. I have 5+ years of experience across travel, tourism and other industries.</p>
           <p>I'm the founder and CEO of Vistrank Marketing Agency. I also hold a senior Sales and Marketing role at Beyond the Plains Safaris, a KATO-registered Kenya and Tanzania safari operator.</p>
           <p>Outside client work, I'm building Silent Plains Africa, my own Kenya and Tanzania safari company.</p>
+          <p><strong>Interests:</strong> safari travel, SEO, and websites that turn visitors into customers.</p>
+          <p><strong>The work I want to do:</strong> build fast, well-made websites for travel brands, and sharpen my front-end skills in HTML, CSS and JavaScript to do it.</p>
         </div>
         <div class="sign-card reveal">
           <img src="Images/biron_signature-removebg-preview.png" alt="Biron Ogola signature">
@@ -79,7 +81,18 @@
 
     <section id="skills" class="alt">
       <div class="container">
-        <h2>What I Do</h2>
+        <h2>Skills</h2>
+
+        <h3 class="sub-title">Technical skills</h3>
+        <div class="grid">
+          <div class="card reveal"><h3>HTML</h3><p>Page structure with semantic sections, headings, links and images.</p></div>
+          <div class="card reveal"><h3>CSS</h3><p>Layout with grid and flexbox, responsive design and dark mode.</p></div>
+          <div class="card reveal"><h3>JavaScript</h3><p>Menu toggle, theme switch, counters and charts built from data.</p></div>
+          <div class="card reveal"><h3>Git and GitHub</h3><p>Version control with commits, and code hosted in a GitHub repository.</p></div>
+          <div class="card reveal"><h3>Vercel</h3><p>Live deployment, with automatic updates every time I push.</p></div>
+        </div>
+
+        <h3 class="sub-title block-gap">Marketing skills</h3>
         <div class="grid">
           <div class="card reveal"><h3>SEO</h3><p>Technical SEO, on-page optimization and content that ranks.</p></div>
           <div class="card reveal"><h3>Web Development</h3><p>Fast, clean websites built to convert visitors into leads.</p></div>
@@ -91,7 +104,6 @@
       </div>
     </section>
 
-    <!-- CHARTS: the bars and the pie are built by script.js from data arrays -->
     <section id="charts">
       <div class="container">
         <h2>Skills at a Glance</h2>
@@ -125,7 +137,26 @@
       </div>
     </section>
 
-    <section id="experience" class="alt">
+    <section id="education" class="alt">
+      <div class="container">
+        <h2>Education &amp; Learning</h2>
+        <div class="grid">
+          <article class="card reveal">
+            <p class="meta">2026</p>
+            <h3>Web Development Training</h3>
+            <p>Learning HTML, CSS, JavaScript, Git, GitHub and Vercel deployment. My final project is this personal portfolio, built from scratch and deployed live.</p>
+          </article>
+          <article class="card reveal">
+            <p class="meta">5+ years</p>
+            <h3>On-the-job learning in digital marketing</h3>
+            <p>Hands-on work in SEO, paid advertising, content and web development at Vistrank Marketing Agency and Beyond the Plains Safaris.</p>
+          </article>
+          <!-- To add your school, college or a certificate, copy one of the cards above and change the text. -->
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
       <div class="container">
         <h2>Experience</h2>
         <div class="timeline">
@@ -145,9 +176,10 @@
       </div>
     </section>
 
-    <section id="projects">
+    <section id="projects" class="alt">
       <div class="container">
-        <h2>Websites I've Worked On</h2>
+        <h2>Projects</h2>
+        <p class="note">Websites I've worked on, plus this portfolio.</p>
         <div class="grid projects-grid">
 
           <article class="card project reveal">
@@ -206,16 +238,34 @@
             </div>
           </article>
 
+          <article class="card project reveal">
+            <div class="shot">
+              <img loading="lazy" alt="Preview of this portfolio website"
+                   src="https://s0.wp.com/mshots/v1/https%3A%2F%2Fbiron-portfolio.vercel.app%2F?w=800&h=500"
+                   onerror="this.style.display='none'">
+            </div>
+            <div class="body">
+              <h3>This Portfolio</h3>
+              <div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Git</span><span>Vercel</span></div>
+              <p>My personal portfolio, built with HTML, CSS and JavaScript. The code lives on GitHub and is deployed on Vercel.</p>
+              <div class="btn-row">
+                <a class="btn btn-dark" href="https://biron-portfolio.vercel.app/" target="_blank" rel="noopener noreferrer">Live site</a>
+                <a class="btn btn-dark" href="https://github.com/Ogolabiron-vistrank/Portfolio" target="_blank" rel="noopener noreferrer">GitHub repo</a>
+              </div>
+            </div>
+          </article>
+
         </div>
       </div>
     </section>
 
-    <section id="contact" class="alt">
+    <section id="contact">
       <div class="container center reveal">
         <h2>Let's Work Together</h2>
         <p>Need more traffic, more enquiries or a better website? Send me a message.</p>
         <p><a href="mailto:ogola@vistrankmarketingagency.co.ke">ogola@vistrankmarketingagency.co.ke</a></p>
         <p><a href="tel:+254745590128">+254 745 590 128</a></p>
+        <p><a href="https://github.com/Ogolabiron-vistrank" target="_blank" rel="noopener noreferrer">github.com/Ogolabiron-vistrank</a></p>
       </div>
     </section>
   </main>
@@ -224,7 +274,6 @@
     <p>&copy; <span id="year">2026</span> Biron Ogola. All rights reserved.</p>
   </footer>
 
-  <!-- Floating back-to-top button (arrow is an SVG, not an emoji) -->
   <button id="to-top" class="to-top" aria-label="Back to top">
     <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
       <path d="M6 15l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>

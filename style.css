@@ -184,3 +184,18 @@ footer p { margin: 0; }
   .reveal, .fill, .vfill, .seg { transition: none; }
   html { scroll-behavior: auto; }
 }
+/* ---------- Additions: education, technical skills, nav fit ---------- */
+.sub-title { font-size: 1rem; color: var(--gold); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; }
+.block-gap { margin-top: 44px; }
+.card .meta { color: var(--gold); font-weight: 700; font-size: .8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+.alt .project { background: var(--bg); }   /* keeps project cards visible on the alternate background */
+.btn-row { display: flex; flex-wrap: wrap; gap: 10px; }
+
+/* 7 nav links need less padding, and the menu should collapse earlier */
+nav a { padding: 8px 10px; letter-spacing: .5px; }
+@media (max-width: 900px) {
+  .menu-btn { display: block; }
+  nav { display: none; position: absolute; top: 64px; left: 0; right: 0; background: var(--navy); }
+  nav.open { display: block; }
+  nav ul { flex-direction: column; padding: 12px 24px; }
+}
